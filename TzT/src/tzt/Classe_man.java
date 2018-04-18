@@ -10,5 +10,5 @@ package tzt;
  * @author nathanICT
  */
 public class Classe_man {
-    
+    String "robert is een held";
 }
