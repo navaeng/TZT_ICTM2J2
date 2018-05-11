@@ -47,7 +47,7 @@ public class Bezorger_dashboard extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 785, 646);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(245, 245, 245));
+		contentPane.setBackground(new Color(247, 247, 247));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -94,7 +94,7 @@ public class Bezorger_dashboard extends JFrame {
 		
 		Panel panel_8 = new Panel();
 		panel_8.setBackground(new Color(51, 51, 51));
-		panel_8.setBounds(0, 69, 178, 547);
+		panel_8.setBounds(0, 0, 178, 616);
 		contentPane.add(panel_8);
 		panel_8.setLayout(null);
 		
@@ -102,38 +102,44 @@ public class Bezorger_dashboard extends JFrame {
 		button_1.setForeground(new Color(255, 153, 51));
 		button_1.setFont(new Font("Arial", Font.BOLD, 12));
 		button_1.setBackground(new Color(51, 51, 51));
-		button_1.setBounds(0, 151, 178, 52);
+		button_1.setBounds(0, 190, 178, 52);
 		panel_8.add(button_1);
 		
 		Button button_2 = new Button("Levering");
 		button_2.setFont(new Font("Arial", Font.BOLD, 12));
 		button_2.setForeground(new Color(255, 153, 51));
 		button_2.setBackground(new Color(51, 51, 51));
-		button_2.setBounds(0, 93, 178, 52);
+		button_2.setBounds(0, 138, 178, 52);
 		panel_8.add(button_2);
 		
 		Button button_3 = new Button("Dashboard");
 		button_3.setFont(new Font("Arial", Font.PLAIN, 12));
 		button_3.setBackground(new Color(255, 153, 51));
-		button_3.setBounds(0, 35, 178, 52);
+		button_3.setBounds(0, 80, 178, 52);
 		panel_8.add(button_3);
 		
 		Button button = new Button("Instellingen");
 		button.setForeground(new Color(255, 153, 51));
 		button.setFont(new Font("Arial", Font.BOLD, 12));
 		button.setBackground(new Color(51, 51, 51));
-		button.setBounds(0, 209, 178, 52);
+		button.setBounds(0, 249, 178, 52);
 		panel_8.add(button);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(36, 0, 142, 57);
+		panel_8.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\natha\\OneDrive\\Afbeeldingen\\TZT.png"));
+		lblNewLabel.setBackground(Color.WHITE);
 		
 		Panel panel_9 = new Panel();
 		panel_9.setBackground(new Color(255, 153, 0));
-		panel_9.setBounds(0, 0, 769, 69);
+		panel_9.setBounds(175, 0, 594, 69);
 		contentPane.add(panel_9);
 		panel_9.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(10, 11, 104, 47);
-		panel_9.add(lblNewLabel);
+		Panel panel_10 = new Panel();
+		panel_10.setBackground(UIManager.getColor("Button.highlight"));
+		panel_10.setBounds(451, 10, 133, 49);
+		panel_9.add(panel_10);
 	}
 }
