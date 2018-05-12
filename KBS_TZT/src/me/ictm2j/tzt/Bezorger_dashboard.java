@@ -141,5 +141,10 @@ public class Bezorger_dashboard extends JFrame {
 		panel_10.setBackground(UIManager.getColor("Button.highlight"));
 		panel_10.setBounds(451, 10, 133, 49);
 		panel_9.add(panel_10);
+		panel_10.setLayout(null);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(10, 5, 113, 33);
+		panel_10.add(textArea);
 	}
 }
