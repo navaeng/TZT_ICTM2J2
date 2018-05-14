@@ -1,15 +1,15 @@
 package me.ictm2j.tzt;
 
 public class Bikeway extends Route{
-	private double distance;
+	private int distance;
 	private int costs;
 	
-	public Bikeway(double distance, int costs){
+	public Bikeway(int distance, int costs){
 		this.distance = distance;
 		this.costs = costs;
 	}
 
-	public double getDistance() {
+	public int getDistance() {
 		return distance;
 	}
 
