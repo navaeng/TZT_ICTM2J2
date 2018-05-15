@@ -27,7 +27,7 @@ import java.awt.Choice;
 import javax.swing.JTabbedPane;
 import java.awt.SystemColor;
 
-public class Bezorger_Dashboard extends JFrame {
+public class Bezorger_dashboard extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panelDashboard;
@@ -41,7 +41,7 @@ public class Bezorger_Dashboard extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bezorger_Dashboard frame = new Bezorger_Dashboard();
+					Bezorger_dashboard frame = new Bezorger_dashboard();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class Bezorger_Dashboard extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Bezorger_Dashboard() {
+	public Bezorger_dashboard() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 785, 646);
 		contentPane = new JPanel();
