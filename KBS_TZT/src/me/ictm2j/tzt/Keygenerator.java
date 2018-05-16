@@ -1,7 +1,6 @@
 package me.ictm2j.tzt;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Keygenerator {
 
