@@ -69,7 +69,7 @@ public class TZTcourierSettings extends JFrame {
 		Button buttonDashSet = new Button("Dashboard");
 		buttonDashSet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new TZTcourierSettings().setVisible(false);
+				panelSettings.setVisible(false);
 				new TZTcourierDashboard().setVisible(true);
 			}
 		});
@@ -82,7 +82,7 @@ public class TZTcourierSettings extends JFrame {
 		Button buttonLevSet = new Button("Leveringen");
 		buttonLevSet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new TZTcourierSettings().setVisible(false);
+				panelSettings.setVisible(false);
 				new TZTcourierDelivery().setVisible(true);
 			}
 		});
@@ -95,7 +95,7 @@ public class TZTcourierSettings extends JFrame {
 		Button buttonMelSet = new Button("Meldingen\r\n");
 		buttonMelSet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new TZTcourierSettings().setVisible(false);
+				panelSettings.setVisible(false);
 				new TZTcourierNotifications().setVisible(true);			
 			}
 		});
