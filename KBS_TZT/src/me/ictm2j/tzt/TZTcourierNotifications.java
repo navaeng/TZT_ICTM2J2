@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import java.awt.Choice;
 import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TZTcourierNotifications extends JFrame {
 
@@ -64,6 +66,12 @@ public class TZTcourierNotifications extends JFrame {
 		panel_1.add(label);
 		
 		Button buttonDasMel = new Button("Dashboard");
+		buttonDasMel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				new TZTcourierDashboard().setVisible(true);
+			}
+		});
 		buttonDasMel.setForeground(new Color(255, 153, 0));
 		buttonDasMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonDasMel.setBackground(new Color(51, 51, 51));
@@ -71,6 +79,13 @@ public class TZTcourierNotifications extends JFrame {
 		panel_1.add(buttonDasMel);
 		
 		Button buttonLevMel = new Button("Leveringen");
+		buttonLevMel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				new TZTcourierDelivery().setVisible(true);
+				
+			}
+		});
 		buttonLevMel.setForeground(new Color(255, 153, 0));
 		buttonLevMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonLevMel.setBackground(new Color(51, 51, 51));
@@ -85,6 +100,12 @@ public class TZTcourierNotifications extends JFrame {
 		panel_1.add(buttonMelMel);
 		
 		Button buttonSetMel = new Button("Instellingen");
+		buttonSetMel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				new TZTcourierSettings().setVisible(true);
+			}
+		});
 		buttonSetMel.setForeground(new Color(255, 153, 0));
 		buttonSetMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonSetMel.setBackground(new Color(51, 51, 51));

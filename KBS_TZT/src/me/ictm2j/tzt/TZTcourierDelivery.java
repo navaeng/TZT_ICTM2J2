@@ -104,6 +104,12 @@ public class TZTcourierDelivery extends JFrame {
 		panel_2.add(label_1);
 		
 		Button buttonDashLev = new Button("Dashboard");
+		buttonDashLev.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				new TZTcourierDashboard().setVisible(true);
+			}
+		});
 		buttonDashLev.setForeground(new Color(255, 153, 0));
 		buttonDashLev.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonDashLev.setBackground(new Color(51, 51, 51));
@@ -111,6 +117,12 @@ public class TZTcourierDelivery extends JFrame {
 		panel_2.add(buttonDashLev);
 		
 		Button buttonMelLev = new Button("Meldingen\r\n");
+		buttonMelLev.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				new TZTcourierNotifications().setVisible(true);
+			}
+		});
 		buttonMelLev.setForeground(new Color(255, 153, 0));
 		buttonMelLev.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonMelLev.setBackground(new Color(51, 51, 51));
@@ -125,6 +137,13 @@ public class TZTcourierDelivery extends JFrame {
 		panel_2.add(buttonLevLev);
 		
 		Button buttonInsLev = new Button("Instellingen");
+		buttonInsLev.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+			new TZTcourierSettings().setVisible(true);
+			
+			}
+		});
 		buttonInsLev.setForeground(new Color(255, 153, 0));
 		buttonInsLev.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonInsLev.setBackground(new Color(51, 51, 51));
