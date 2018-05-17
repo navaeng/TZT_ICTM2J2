@@ -2,7 +2,9 @@ package me.ictm2j.tzt;
 
 public class Testing {
 
-	public void main() {
+	public static void main(String[] args) {
 		Connection.openConnection();
+		TZTcourierDashboard frame = new TZTcourierDashboard();
+		frame.setVisible(true);
 	}
 }
