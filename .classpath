@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="KBS_TZT/src"/>
-	<classpathentry kind="lib" path="src/me/ictm2j/tzt/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="KBS_TZT/src/me/ictm2j/tzt/lib/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
