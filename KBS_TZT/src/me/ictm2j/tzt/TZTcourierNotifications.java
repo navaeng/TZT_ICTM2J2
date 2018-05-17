@@ -1,157 +1,123 @@
 package me.ictm2j.tzt;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+import java.awt.FlowLayout;
+
 import javax.swing.JLabel;
+
+import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Font;
+
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
-import java.awt.Choice;
-import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TZTcourierNotifications extends JFrame {
-
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TZTcourierNotifications frame = new TZTcourierNotifications();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+public class TZTcourierNotifications extends JFrame implements ActionListener {
+	
+	protected JPanel navPanel;
+	protected JPanel centerPanel;
+	
 	/**
 	 * Create the frame.
 	 */
 	public TZTcourierNotifications() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 788, 648);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 769, 607);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBackground(new Color(51, 51, 51));
-		panel_1.setBounds(0, 0, 125, 607);
-		panel.add(panel_1);
-		
+		setBounds(100, 100, 785, 646);
+
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("C:\\Users\\natha\\OneDrive\\Afbeeldingen\\TZT.png"));
 		label.setBackground(Color.WHITE);
 		label.setBounds(10, 11, 87, 41);
-		panel_1.add(label);
 		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(487, 11, 148, 53);
+		
+		navPanel = new JPanel();
+		navPanel.setBounds(0, 0, 125, 607);
+		navPanel.setLayout(null);
+		navPanel.setBackground(new Color(51, 51, 51));
+
 		Button buttonDasMel = new Button("Dashboard");
-		buttonDasMel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				new TZTcourierDashboard().setVisible(true);
-			}
-		});
+		buttonDasMel.addActionListener(this);
 		buttonDasMel.setForeground(new Color(255, 153, 0));
 		buttonDasMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonDasMel.setBackground(new Color(51, 51, 51));
 		buttonDasMel.setBounds(0, 138, 125, 54);
-		panel_1.add(buttonDasMel);
+		navPanel.add(buttonDasMel);
 		
 		Button buttonLevMel = new Button("Leveringen");
-		buttonLevMel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				new TZTcourierDelivery().setVisible(true);
-				
-			}
-		});
+		buttonLevMel.addActionListener(this);
 		buttonLevMel.setForeground(new Color(255, 153, 0));
 		buttonLevMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonLevMel.setBackground(new Color(51, 51, 51));
 		buttonLevMel.setBounds(0, 198, 125, 54);
-		panel_1.add(buttonLevMel);
+		navPanel.add(buttonLevMel);
 		
 		Button buttonMelMel = new Button("Meldingen");
 		buttonMelMel.setForeground(Color.BLACK);
 		buttonMelMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonMelMel.setBackground(new Color(255, 153, 0));
 		buttonMelMel.setBounds(0, 258, 125, 54);
-		panel_1.add(buttonMelMel);
+		navPanel.add(buttonMelMel);
 		
 		Button buttonSetMel = new Button("Instellingen");
-		buttonSetMel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				new TZTcourierSettings().setVisible(true);
-			}
-		});
+		buttonSetMel.addActionListener(this);
 		buttonSetMel.setForeground(new Color(255, 153, 0));
 		buttonSetMel.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonSetMel.setBackground(new Color(51, 51, 51));
 		buttonSetMel.setActionCommand("Meldingen\r\n");
 		buttonSetMel.setBounds(0, 318, 125, 54);
-		panel_1.add(buttonSetMel);
+		navPanel.add(buttonSetMel);
+
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 153, 0));
-		panel_2.setBounds(124, 0, 645, 75);
-		panel.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JTextPane textPane_2 = new JTextPane();
-		textPane_2.setBounds(487, 11, 148, 53);
-		panel_2.add(textPane_2);
-		
+		centerPanel = new JPanel();
+		centerPanel.setBounds(125, 75, 642, 524);
+		centerPanel.setBackground(Color.white);
+		centerPanel.setBorder(new LineBorder(Color.green, 5));
+
 		JPanel panelJouwTraject = new JPanel();
-		panelJouwTraject.setLayout(null);
-		panelJouwTraject.setBackground(Color.WHITE);
-		panelJouwTraject.setBounds(187, 139, 549, 196);
-		panel.add(panelJouwTraject);
+		panelJouwTraject.setBackground(new Color(255, 153, 0));
+		panelJouwTraject.setBorder(new LineBorder(Color.red));
+		panelJouwTraject.setBounds(50, 50, 500, 100);
+		centerPanel.add(panelJouwTraject);
 		
 		JLabel lblJouwTraject = new JLabel("Jouw traject:");
 		lblJouwTraject.setBounds(10, 11, 117, 25);
 		panelJouwTraject.add(lblJouwTraject);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBackground(new Color(255, 153, 0));
-		textPane.setBounds(10, 47, 529, 138);
-		panelJouwTraject.add(textPane);
+		JTextPane textPane_2 = new JTextPane();
+		textPane_2.setBackground(new Color(255, 153, 0));
+		textPane_2.setBounds(10, 47, 300, 108);
+		panelJouwTraject.add(textPane_2);
 		
 		JPanel panelPriveMeldingen = new JPanel();
-		panelPriveMeldingen.setLayout(null);
-		panelPriveMeldingen.setBackground(Color.WHITE);
+		panelPriveMeldingen.setBackground(new Color(255, 153, 0));
 		panelPriveMeldingen.setBounds(187, 356, 549, 196);
-		panel.add(panelPriveMeldingen);
-		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBackground(new Color(255, 153, 0));
-		textPane_1.setBounds(10, 47, 529, 138);
-		panelPriveMeldingen.add(textPane_1);
+		centerPanel.add(panelPriveMeldingen);
 		
 		JLabel lblPrivMeldingen = new JLabel("Priv\u00E9 meldingen");
 		lblPrivMeldingen.setBounds(10, 11, 149, 25);
 		panelPriveMeldingen.add(lblPrivMeldingen);
+		
+		JTextPane textPane_3 = new JTextPane();
+		textPane_3.setBackground(new Color(255, 153, 0));
+		textPane_3.setBounds(10, 47, 300, 108);
+		panelPriveMeldingen.add(textPane_3);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
 	}
 
 }

@@ -18,6 +18,7 @@ public class Connection {
 			String password = "ICTm2jTZT";
 
 			connection = DriverManager.getConnection("jdbc:mysql://" + host + "/" + database, username, password);
+			
 			createTables();
 
 			isConnected = true;
@@ -29,21 +30,6 @@ public class Connection {
 
 	public synchronized static void createTables() {
 		try{
-
-			PreparedStatement sql1 = connection.prepareStatement("CREATE TABLE IF NOT EXISTS");
-			sql1.execute();
-
-			sql1.close();
-
-			PreparedStatement sql2 = connection.prepareStatement("CREATE TABLE IF NOT EXISTS");
-			sql2.execute();
-
-			sql2.close();
-
-			PreparedStatement sql3 = connection.prepareStatement("CREATE TABLE IF NOT EXISTS");
-			sql3.execute();
-
-			sql3.close();
 
 		}catch(Exception e){
 			e.printStackTrace();
