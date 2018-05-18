@@ -56,7 +56,7 @@ public class AdminAddDelivery extends JPanel {
 		lblRouteId.setBounds(192, 199, 62, 25);
 		add(lblRouteId);
 		
-		JLabel lblDatumId = new JLabel("Datum ID");
+		JLabel lblDatumId = new JLabel("Datum");
 		lblDatumId.setBounds(192, 235, 62, 25);
 		add(lblDatumId);
 		
