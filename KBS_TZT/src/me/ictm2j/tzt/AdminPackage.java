@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class AdminPackage extends JPanel {
+public class AdminPackage extends JPanel implements ActionListener {
 	private JTextField textFieldLengte;
 	private JTextField textFieldBreedte;
 	private JTextField textFieldHoogte;
@@ -78,29 +78,32 @@ public class AdminPackage extends JPanel {
 		add(lblPakket);
 		
 		JButton btnNewButton = new JButton("Pakket toevoegen");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//de velden naar de database uploaden
-				try {
-				String strl=textFieldLengte.getText();
-				String strb=textFieldBreedte.getText();
-				String strh=textFieldHoogte.getText();
-				String strp=textFieldPackageID.getText();
-				
-				Statement s=Connection.connection.createStatement();
-				
-					
-					s.execute("insert into Package (packageID,lengte,breedte,hoogte)values('"+ strp + "' , '"+ strl + "', '" + strb + "', '" + strh + "')");
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}	
-				
-				
-			}
-		});
+		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(101, 201, 138, 26);
 		add(btnNewButton);
 
 	}
-}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+		//de velden naar de database uploaden
+		try {
+		String strl=textFieldLengte.getText();
+		String strb=textFieldBreedte.getText();
+		String strh=textFieldHoogte.getText();
+		String strp=textFieldPackageID.getText();
+		
+		Statement s = Connection.connection.createStatement();
+		
+			
+	
+		s.execute("INSERT INTO Package (packageID,lengte,breedte,hoogte)values('"+ strp + "' , '"+ strl + "', '" + strb + "', '" + strh + "')");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		repaint();
+	}
+	}
+
