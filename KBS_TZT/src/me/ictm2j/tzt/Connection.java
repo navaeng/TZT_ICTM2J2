@@ -7,7 +7,6 @@ public class Connection {
 
 	public static java.sql.Connection connection;
 
-
 	public static boolean isConnected = false;
 	
 	public synchronized static void openConnection() {

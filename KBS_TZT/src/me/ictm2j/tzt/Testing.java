@@ -4,7 +4,7 @@ public class Testing {
 
 	public static void main(String[] args) {
 		Connection.openConnection();
-		TZTcourierDashboard frame = new TZTcourierDashboard();
+		Login frame = new Login();
 		frame.setVisible(true);
 	}
 }

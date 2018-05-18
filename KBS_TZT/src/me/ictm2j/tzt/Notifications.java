@@ -8,7 +8,6 @@ public class Notifications extends JPanel {
 	 * Create the panel.
 	 */
 	public Notifications() {
-
 	}
 
 }
