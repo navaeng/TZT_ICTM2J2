@@ -8,11 +8,15 @@ import javax.swing.JTextField;
 import java.awt.Choice;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class AdminAddRoute extends JPanel {
+public class AdminAddRoute extends JPanel implements ActionListener{
 	private JTextField textFieldBeginadres;
 	private JTextField textFieldEindadres;
+	private JTextField textFieldBeginStation;
+	private JTextField textFieldEindStation;
 
 	/**
 	 * Create the panel.
@@ -47,22 +51,45 @@ public class AdminAddRoute extends JPanel {
 		textFieldBeginadres.setBounds(187, 59, 205, 25);
 		add(textFieldBeginadres);
 		
+		textFieldBeginStation = new JTextField();
+		textFieldBeginStation.setColumns(10);
+		textFieldBeginStation.setBounds(187, 97, 205, 25);
+		add(textFieldBeginStation);
+		
+		textFieldEindStation = new JTextField();
+		textFieldEindStation.setColumns(10);
+		textFieldEindStation.setBounds(187, 133, 205, 25);
+		add(textFieldEindStation);
+
 		textFieldEindadres = new JTextField();
 		textFieldEindadres.setColumns(10);
 		textFieldEindadres.setBounds(187, 167, 205, 25);
 		add(textFieldEindadres);
 		
-		Choice choiceBeginStation = new Choice();
-		choiceBeginStation.setBounds(187, 95, 205, 25);
-		add(choiceBeginStation);
-		
-		Choice choiceEindstation = new Choice();
-		choiceEindstation.setBounds(187, 131, 205, 20);
-		add(choiceEindstation);
-		
 		JButton btnNewButtonRouteToevoegen = new JButton("Toevoegen");
+		btnNewButtonRouteToevoegen.addActionListener(this);
 		btnNewButtonRouteToevoegen.setBounds(187, 203, 205, 31);
 		add(btnNewButtonRouteToevoegen);
+		
 
 	}
+	public void actionPerformed(ActionEvent e) {
+		try {
+			String strba=textFieldBeginadres.getText();
+			String strbs=textFieldBeginStation.getText();
+			String stres=textFieldEindStation.getText();
+			String strea=textFieldEindadres.getText();
+								
+			Statement s=Connection.connection.createStatement();
+			
+				
+		//		s.execute("INSERT INTO route (,userID,packageID,lockerID,routeID,date)VALUES('"+ strd + "' , '"+ stru + "', '" + strl + "','" + strda +"')");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}	
+		//sluit addroute
+		//open adddelivery
+	}
+	
 }

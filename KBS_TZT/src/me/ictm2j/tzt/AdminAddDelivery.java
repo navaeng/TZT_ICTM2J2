@@ -7,14 +7,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 public class AdminAddDelivery extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textFieldDeliveryID;
+	private JTextField textFieldUserID;
+	private JTextField textFieldLockerID;
+	private JTextField textFieldRouteID;
+	private JTextField textFieldDatum;
 
 	/**
 	 * Create the panel.
@@ -37,58 +41,74 @@ public class AdminAddDelivery extends JPanel {
 		add(lblLeveringSamenstellen);
 		
 		JLabel lblDeliveryId = new JLabel("Delivery ID");
-		lblDeliveryId.setBounds(192, 55, 62, 25);
+		lblDeliveryId.setBounds(192, 43, 62, 25);
 		add(lblDeliveryId);
 		
 		JLabel lblUserId = new JLabel("User ID");
-		lblUserId.setBounds(192, 91, 62, 25);
+		lblUserId.setBounds(192, 79, 62, 25);
 		add(lblUserId);
 		
-		JLabel lblPackageId = new JLabel("Package ID");
-		lblPackageId.setBounds(192, 127, 62, 25);
-		add(lblPackageId);
-		
 		JLabel lblLockerId = new JLabel("Locker ID");
-		lblLockerId.setBounds(192, 163, 62, 25);
+		lblLockerId.setBounds(192, 115, 62, 25);
 		add(lblLockerId);
 		
 		JLabel lblRouteId = new JLabel("Route ID");
-		lblRouteId.setBounds(192, 199, 62, 25);
+		lblRouteId.setBounds(192, 151, 62, 25);
 		add(lblRouteId);
 		
 		JLabel lblDatumId = new JLabel("Datum");
-		lblDatumId.setBounds(192, 235, 62, 25);
+		lblDatumId.setBounds(192, 187, 62, 25);
 		add(lblDatumId);
 		
-		textField = new JTextField();
-		textField.setBounds(264, 57, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		textFieldDeliveryID = new JTextField();
+		textFieldDeliveryID.setBounds(264, 45, 86, 20);
+		add(textFieldDeliveryID);
+		textFieldDeliveryID.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(264, 93, 86, 20);
-		add(textField_1);
+		textFieldUserID = new JTextField();
+		textFieldUserID.setColumns(10);
+		textFieldUserID.setBounds(264, 81, 86, 20);
+		add(textFieldUserID);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(264, 129, 86, 20);
-		add(textField_2);
+		textFieldLockerID = new JTextField();
+		textFieldLockerID.setColumns(10);
+		textFieldLockerID.setBounds(264, 117, 86, 20);
+		add(textFieldLockerID);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(264, 165, 86, 20);
-		add(textField_3);
+		textFieldRouteID = new JTextField();
+		textFieldRouteID.setColumns(10);
+		textFieldRouteID.setBounds(264, 153, 86, 20);
+		add(textFieldRouteID);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(264, 201, 86, 20);
-		add(textField_4);
+		textFieldDatum = new JTextField();
+		textFieldDatum.setColumns(10);
+		textFieldDatum.setBounds(264, 189, 86, 20);
+		add(textFieldDatum);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(264, 237, 86, 20);
-		add(textField_5);
+		JButton buttonSamenstellen = new JButton("Samenstellen");
+		buttonSamenstellen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String strd=textFieldDeliveryID.getText();
+					String stru=textFieldUserID.getText();
+					String strl=textFieldLockerID.getText();
+					String strda=textFieldDatum.getText();
+										
+					Statement s=Connection.connection.createStatement();
+					
+						
+						s.execute("INSERT INTO Package (deliveryID,userID,packageID,lockerID,routeID,date)VALUES('"+ strd + "' , '"+ stru + "', '" + strl + "','" + strda +"')");
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+				
+				
+			}
+		});
+		buttonSamenstellen.setBounds(192, 255, 158, 25);
+		add(buttonSamenstellen);
 
 	}
 }
