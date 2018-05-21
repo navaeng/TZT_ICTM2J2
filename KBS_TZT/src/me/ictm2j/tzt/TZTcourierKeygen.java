@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -20,26 +21,14 @@ import java.awt.event.ActionEvent;
 
 public class TZTcourierKeygen extends JPanel {
 	
+	private int keygenID = 1;
+	
 	public static void main(String[] args) {
 		Connection.openConnection();
 		TZTcourierDashboard frame = new TZTcourierDashboard();
-		frame.setVisible(false);
+		frame.setVisible(true);
 		System.out.println("Ik ben main");
 		new TZTcourierKeygen();
-		try {
-			PreparedStatement key = Connection.connection.prepareStatement("SELECT generatedKey FROM Keygen WHERE keygenID = 1");
-			key.executeQuery();
-			
-			ResultSet result = key.getResultSet();
-			
-			result.next();
-			
-			System.out.println(result.getInt("generatedKey"));
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("oeps");
-			e1.printStackTrace();
-		}
 	}
 	
 	private final JLabel lblNewLabel = new JLabel("New label");
@@ -55,14 +44,25 @@ public class TZTcourierKeygen extends JPanel {
 		JButton btnGenereerKey = new JButton("Genereer Key");
 		btnGenereerKey.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
-					PreparedStatement key = Connection.connection.prepareStatement("SELECT generatedKey FROM Keygen WHERE keygenID = 1");
-					System.out.println(key);
+					PreparedStatement key = Connection.connection.prepareStatement("SELECT generatedKey FROM Keygen WHERE keygenID = " +keygenID);
+					key.executeQuery();
+					
+					ResultSet result = key.getResultSet();
+					
+					result.next();
+					
+					System.out.println(result.getInt("generatedKey"));
+					lblNewLabel.setVisible(true);
+					lblNewLabel.setText(String.valueOf(result.getInt("generatedKey")));
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("oeps");
 					e1.printStackTrace();
 				}
+				
+				
 				
 			}
 		});
