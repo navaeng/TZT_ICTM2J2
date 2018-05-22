@@ -12,15 +12,16 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class AdminAddRoute extends JPanel implements ActionListener{
-	private static final String strba = null;
 	private JTextField textFieldBeginadres;
 	private JTextField textFieldEindadres;
 	private JTextField textFieldBeginStation;
 	private JTextField textFieldEindStation;
 	private JPanel AdminAddRoute;
 	private JPanel AdminAddDelivery;
-	public String steers;
-	public String sters;
+	public static String steers;
+	public static String sters;
+	public static String steis;
+	public static String sties;
 
 
 	/**
@@ -88,6 +89,8 @@ public class AdminAddRoute extends JPanel implements ActionListener{
 			String strea=textFieldEindadres.getText();
 			this.steers = strba;
 			this.sters = strbs;
+			this.steis = stres;
+			this.sties = strea;
 			
 			
 								
@@ -104,17 +107,17 @@ public class AdminAddRoute extends JPanel implements ActionListener{
 		AdminAddRoute.setVisible(false);
 		AdminAddDelivery.setVisible(true);
 	}
-	private String setBeginAdres(String steers) {
-		return this.steers;
+	protected static String getBeginAdres() {
+		return steers;
 			}
-	private String setBeginStation(String sters) {
-		return this.sters;
+	protected static String getBeginStation() {
+		return sters;
 			}
-	private String setEindStation(String stres) {
-		return this.sters;
+	protected static String getEindStation() {
+		return steis;
 			}
-	private String setEindAdres(String strea) {
-		return this.strea;
+	protected static String getEindAdres() {
+		return sties;
 			}
 	
 }

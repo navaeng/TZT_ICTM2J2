@@ -16,7 +16,7 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.Color;
 
-public class AdminAddDelivery extends JPanel implements ActionListener{
+public class AdminAddDelivery extends JPanel   implements ActionListener{
 	private JTextField textFieldDeliveryID;
 	private JTextField textFieldUserID;
 	private JTextField textFieldLockerID;
@@ -24,7 +24,11 @@ public class AdminAddDelivery extends JPanel implements ActionListener{
 	private JTextField textFieldDatum;
 	private JTextField textFieldpackage;
 	private JPanel	   AdminAddDeliver;
-
+	public static String RBG = GoogleDirectionsAPIConnection.getRBG();
+	public static String RBGL = GoogleDirectionsAPIConnection.getRBGL();
+	public static String STS = GoogleDirectionsAPIConnection.getSTS();
+	public static String STER = GoogleDirectionsAPIConnection.getSTER();
+	public static String STERL = GoogleDirectionsAPIConnection.getSTERL();
 	/**
 	 * Create the panel.
 	 */
@@ -92,25 +96,19 @@ public class AdminAddDelivery extends JPanel implements ActionListener{
 		buttonSamenstellen.addActionListener(this);
 		add(buttonSamenstellen);
 		
-		JLabel lblRouteInformatie = new JLabel("Route informatie");
-		lblRouteInformatie.setBounds(10, 12, 135, 25);
-		lblRouteInformatie.setFont(new Font("Arial", Font.BOLD, 11));
-		add(lblRouteInformatie);
+		
 		
 		JLabel labelpackage = new JLabel("Datum");
 		labelpackage.setBounds(192, 219, 62, 25);
 		add(labelpackage);
 		
-		textFieldpackage = new JTextField();
-		textFieldpackage.setBounds(264, 220, 86, 20);
-		textFieldpackage.setColumns(10);
-		add(textFieldpackage);
 		
 		JButton btnOphalen = new JButton("Ophalen");
 		btnOphalen.setBounds(10, 256, 172, 25);
 		add(btnOphalen);
 
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		try {
 			String strd=textFieldDeliveryID.getText();
