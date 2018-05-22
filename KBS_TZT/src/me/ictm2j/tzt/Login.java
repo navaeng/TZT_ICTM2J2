@@ -1,11 +1,9 @@
 package me.ictm2j.tzt;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 import java.awt.Button;
 import javax.swing.JPasswordField;
@@ -16,10 +14,10 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
-import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class Login extends JFrame implements ActionListener {
@@ -28,10 +26,6 @@ public class Login extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private Button loginbutton;
-
-	/**
-	 * Launch the application.
-	 */
 
 	/**
 	 * Create the frame.
@@ -87,25 +81,33 @@ public class Login extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(loginbutton)) {
 			String password = passwordField.getText();
-			String username = textField.getText();
+			int username = Integer.parseInt(textField.getText());
+			try {
+				if (DbHelper.useridExists(username) == true) {
+					if (validatePassword(password, getPasswordByUser(username))) {
+						this.setVisible(false);
+						String role = DbHelper.getUserdataByUserID(username).get(1);
 
-			System.out.println("Username: " + username + ", Password: " + password);
-			
-			String generatedSecuredPasswordHash = null;
+						Dashboard dashboard = null;
+						if (role.equalsIgnoreCase("Treinkoerier")) {
+							dashboard = new Dashboard (new Traincourier(username, DbHelper.getUserdataByUserID(username).get(0), null));
+						} else if (role.equalsIgnoreCase("Fietskoerier")) {
+							dashboard = new Dashboard (new Bikecourier(username, DbHelper.getUserdataByUserID(username).get(0), null));
+						} else if (role.equalsIgnoreCase("Systeembeheerder")) {
+							dashboard = new Dashboard (new Systemmanager(username, DbHelper.getUserdataByUserID(username).get(0)));
+						}
 
-			try {	
-				boolean matched = validatePassword(password, generatedSecuredPasswordHash);
-				System.out.println(matched);
+						dashboard.setVisible(true);
 
-			} catch (NoSuchAlgorithmException e1) {
-				e1.printStackTrace();
-			} catch (InvalidKeySpecException e1) {
-				e1.printStackTrace();
+					} else {
+						System.out.println("Incorrect password");
+					}
+				} else {
+					System.out.println("Username does not exist");
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
-
-
-		} else {
-			System.out.print("false");
 		}
 	}
 
@@ -138,5 +140,19 @@ public class Login extends JFrame implements ActionListener {
 		return bytes;
 	}
 
+	private static String getPasswordByUser(int user_id)
+	{
+		try {
+			PreparedStatement selectsql = Connection.connection.prepareStatement("SELECT password FROM Userdata WHERE UserID=" + user_id + ";");
+			ResultSet rs = selectsql.executeQuery();
+
+			rs.next();
+
+			return rs.getString("password");
+		} catch (Exception E) {
+			E.printStackTrace();
+		}
+		return null;
+	}
 
 }

@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TZTcourierLogin extends JFrame {
+public class TZTcourierLogin extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField;
@@ -56,12 +56,7 @@ public class TZTcourierLogin extends JFrame {
 		panel.setLayout(null);
 		
 		Button button = new Button("Login");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				new TZTcourierDashboard().setVisible(true);
-			}
-		});
+		button.addActionListener(this);
 		button.setFont(new Font("Arial Black", Font.BOLD, 16));
 		button.setBackground(new Color(255, 153, 0));
 		button.setBounds(215, 227, 112, 43);
@@ -82,6 +77,11 @@ public class TZTcourierLogin extends JFrame {
 		label.setIcon(new ImageIcon("C:\\Users\\natha\\OneDrive\\Afbeeldingen\\TZT.png"));
 		label.setBounds(226, 78, 112, 43);
 		panel.add(label);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
 	}
 
 }

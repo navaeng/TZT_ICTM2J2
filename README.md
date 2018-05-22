@@ -1,2 +1,0 @@
-# TZT_ICTM2J2
-TzT

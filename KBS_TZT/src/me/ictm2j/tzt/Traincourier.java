@@ -1,30 +1,68 @@
 package me.ictm2j.tzt;
 
-public class Traincourier implements Courier{
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-	private int courier_id;
-	private String name;
+public class Traincourier implements Courier {
+
 	private String route;
+	private int username;
+	private String name;
 
-	public Traincourier (int courier_id, String name, String route) {
-		this.courier_id = courier_id;
+	public Traincourier(int userid, String name, String password, Route route) {
+		
 		this.name = name;
-		this.route = route;
-	}
+		this.username = userid;
+		
+		try {
+			String originalPassword = password;
 
-	@Override
-	public int getCourier_id() {
-		return this.courier_id;
+			String generatedSecuredPasswordHash = HelperMethods.generateStorngPasswordHash(originalPassword);
+			
+			int userID = HelperMethods.generateUserID(8);
+			
+			this.username = userID;
+			
+			PreparedStatement newUser = Connection.connection.prepareStatement("INSERT INTO Userdata values('" + userID + "','" + name + "', '" + generatedSecuredPasswordHash + "','" + this.toString() + "');");
+
+			newUser.execute();
+			newUser.close();
+			
+			System.out.println("Added Traincourier with userID: " + userID + ".");
+
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
-	@Override
-	public String getName() {
-		return this.name;
+	
+	public Traincourier(int userid, String name, Route route) {
+		
+		this.name = name;
+		this.username = userid;
+		
 	}
-	@Override
+	
 	public String getRoute() {
 		return this.route;
 	}
 
+	public String toString() {
+		return "Treinkoerier";
+	}
 
+	@Override
+	public String getName() {
+		return this.name;
+	}
 
+	@Override
+	public int getUserName() {
+		return this.username;
+	}
 }

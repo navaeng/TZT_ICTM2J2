@@ -23,9 +23,6 @@ public class Keygenerator {
 		return this.time;
 	}
 
-
-
-
 	public static void main(String[] args) throws InterruptedException {
 		
 		code = generateCode();

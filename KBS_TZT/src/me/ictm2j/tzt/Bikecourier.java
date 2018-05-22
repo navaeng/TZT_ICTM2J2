@@ -1,28 +1,58 @@
 package me.ictm2j.tzt;
 
-public class Bikecourier implements Courier {
+import java.sql.PreparedStatement;
 
+public class Bikecourier implements Courier {
 	
-	private int courier_id;
-	private String name;
 	private String route;
-	
-	public Bikecourier (int courier_id, String name, String route) {
-		this.courier_id = courier_id;
+	private int username;
+	private String name;
+
+	public Bikecourier(int userid, String name, String password, Route route) {
 		this.name = name;
-		this.route = route;
+		this.username = userid;
+		
+		try {
+			String originalPassword = password;
+
+			String generatedSecuredPasswordHash = HelperMethods.generateStorngPasswordHash(originalPassword);
+			
+			int userID = HelperMethods.generateUserID(8);
+			
+			this.username = userID;
+			
+			PreparedStatement newUser = Connection.connection.prepareStatement("INSERT INTO Userdata values('" + userID + "','" + name + "', '" + generatedSecuredPasswordHash + "','" + this.toString() + "');");
+
+			newUser.execute();
+			newUser.close();
+			
+			System.out.println("Added Bikecourier with userID: " + userID + ".");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	@Override
-	public int getCourier_id() {
-		return this.courier_id;
+	public Bikecourier(int userid, String name, Route route) {
+		this.name = name;
+		this.username = userid;
 	}
+	
+	public String getRoute() {
+		return this.route;
+	}
+
 	@Override
 	public String getName() {
 		return this.name;
 	}
+
 	@Override
-	public String getRoute() {
-		return this.route;
+	public int getUserName() {
+		return this.username;
+	}
+	
+	public String toString() {
+		return "Fietskoerier";
 	}
 }

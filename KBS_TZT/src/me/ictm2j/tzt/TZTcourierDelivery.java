@@ -15,7 +15,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TZTcourierDelivery extends JFrame {
+public class TZTcourierDelivery extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 
@@ -104,12 +104,7 @@ public class TZTcourierDelivery extends JFrame {
 		panel_2.add(label_1);
 		
 		Button buttonDashLev = new Button("Dashboard");
-		buttonDashLev.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				new TZTcourierDashboard().setVisible(true);
-			}
-		});
+		buttonDashLev.addActionListener(this);
 		buttonDashLev.setForeground(new Color(255, 153, 0));
 		buttonDashLev.setFont(new Font("Arial", Font.BOLD, 12));
 		buttonDashLev.setBackground(new Color(51, 51, 51));
@@ -190,6 +185,11 @@ public class TZTcourierDelivery extends JFrame {
 		textPaneAfgeleverd.setBackground(new Color(255, 153, 0));
 		textPaneAfgeleverd.setBounds(10, 47, 529, 138);
 		panel_5.add(textPaneAfgeleverd);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
 	}
 
 }
