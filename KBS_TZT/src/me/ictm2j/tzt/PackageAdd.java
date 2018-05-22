@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class AdminPackage extends JPanel implements ActionListener {
+public class PackageAdd extends JPanel implements ActionListener {
 	private JTextField textFieldLengte;
 	private JTextField textFieldBreedte;
 	private JTextField textFieldHoogte;
@@ -20,7 +20,7 @@ public class AdminPackage extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public AdminPackage() {
+	public PackageAdd() {
 		setBounds(new Rectangle(10, 11, 452, 291));
 		setLayout(null);
 		

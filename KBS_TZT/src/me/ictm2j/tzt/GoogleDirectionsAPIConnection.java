@@ -9,7 +9,7 @@ import org.json.*;
 
 
 
-public class GoogleDirectionsAPIConnection extends AdminAddRoute {
+public class GoogleDirectionsAPIConnection extends RouteAdd {
 
 //transit&transit_mode=train
 //bicycling

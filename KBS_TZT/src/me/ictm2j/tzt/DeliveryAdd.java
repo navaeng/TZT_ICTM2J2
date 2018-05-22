@@ -16,7 +16,7 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.Color;
 
-public class AdminAddDelivery extends JPanel   implements ActionListener{
+public class DeliveryAdd extends JPanel   implements ActionListener{
 	private JTextField textFieldDeliveryID;
 	private JTextField textFieldUserID;
 	private JTextField textFieldLockerID;
@@ -29,14 +29,15 @@ public class AdminAddDelivery extends JPanel   implements ActionListener{
 	public static String STS = GoogleDirectionsAPIConnection.getSTS();
 	public static String STER = GoogleDirectionsAPIConnection.getSTER();
 	public static String STERL = GoogleDirectionsAPIConnection.getSTERL();
+	private JTextField textFieldpackageID;
 	/**
 	 * Create the panel.
 	 */
-	public AdminAddDelivery() {
+	public DeliveryAdd() {
 		setBounds(new Rectangle(10, 1, 452, 291));
 		setLayout(null);
 		
-		JLabel jlabel = new JLabel("tekst");
+		JLabel jlabel = new JLabel(RBG + "\n" +  RBGL +"\n " + STS +"\n " + STER +"\n " + STERL);
 		jlabel.setBounds(10, 43, 172, 212);
 		jlabel.setBackground(Color.WHITE);
 		add(jlabel);
@@ -97,15 +98,23 @@ public class AdminAddDelivery extends JPanel   implements ActionListener{
 		add(buttonSamenstellen);
 		
 		
-		
-		JLabel labelpackage = new JLabel("Datum");
-		labelpackage.setBounds(192, 219, 62, 25);
-		add(labelpackage);
-		
-		
 		JButton btnOphalen = new JButton("Ophalen");
 		btnOphalen.setBounds(10, 256, 172, 25);
 		add(btnOphalen);
+		
+		JLabel lblPackageid = new JLabel("packageID");
+		lblPackageid.setBounds(192, 223, 62, 25);
+		add(lblPackageid);
+		
+		textFieldpackageID = new JTextField();
+		textFieldpackageID.setColumns(10);
+		textFieldpackageID.setBounds(264, 220, 86, 20);
+		add(textFieldpackageID);
+		
+		JLabel lblRouteEnPrijs = new JLabel("Route en Prijs");
+		lblRouteEnPrijs.setFont(new Font("Arial", Font.BOLD, 11));
+		lblRouteEnPrijs.setBounds(10, 7, 135, 25);
+		add(lblRouteEnPrijs);
 
 	}
 

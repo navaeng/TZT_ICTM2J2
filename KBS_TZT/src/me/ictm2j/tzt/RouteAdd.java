@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class AdminAddRoute extends JPanel implements ActionListener{
+public class RouteAdd extends JPanel implements ActionListener{
 	private JTextField textFieldBeginadres;
 	private JTextField textFieldEindadres;
 	private JTextField textFieldBeginStation;
@@ -27,7 +27,7 @@ public class AdminAddRoute extends JPanel implements ActionListener{
 	/**
 	 * Create the panel.
 	 */
-	public AdminAddRoute() {
+	public RouteAdd() {
 		setBounds(new Rectangle(10, 11, 452, 291));
 		setLayout(null);
 		
