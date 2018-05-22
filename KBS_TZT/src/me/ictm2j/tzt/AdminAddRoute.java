@@ -83,7 +83,7 @@ public class AdminAddRoute extends JPanel implements ActionListener{
 			Statement s=Connection.connection.createStatement();
 			
 				
-		//		s.execute("INSERT INTO route (,userID,packageID,lockerID,routeID,date)VALUES('"+ strd + "' , '"+ stru + "', '" + strl + "','" + strda +"')");
+				s.execute("INSERT INTO Route (startAdress,startStation,endStation,endAdress)VALUES('"+ strba + "' , '"+ strbs + "', '" + stres + "','" + strea +"')");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

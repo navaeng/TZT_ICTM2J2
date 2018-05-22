@@ -141,8 +141,8 @@ public class TZTcourierDashboard extends JFrame implements ActionListener {
 			TZTcourierNotifications notification = new TZTcourierNotifications();
 			contentPanel.add(notification.centerPanel);
 			sidePanel.add(notification.navPanel);
-		} else {
-			System.out.print("false");
+		} else if (e.getSource().equals(buttonSetDash)){
+			System.out.print("");
 		}
 	}
 
