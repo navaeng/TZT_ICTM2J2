@@ -17,24 +17,29 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import javax.swing.JButton;
 
 public class Dashboard extends JFrame implements ActionListener {
 
 	private Employee employee;
-	private JPanel contentPanel;
+	public static JPanel contentPanel;
 	private JPanel sidePanel;
 	private JPanel navPanel;
-	private JPanel centerPanel;
-	private JPanel topPanel;
+	public static JPanel centerPanel;
+	public static String message;
+	public static JLabel lblNewLabel;
+	public static JPanel topPanel;
 	private JLabel label;
 	private Button buttonMelDash;
 	private Button buttonLevDash;
 	private Button buttonDashDash;
 	private Button buttonSetDash;
+	private JButton buttonAddRoute;
 	private JPanel panel;
 	private JPanel panel_2;
 	private JPanel panel_3;
 	private JPanel panel_4;
+	private JPanel methodsTop;
 
 	/**
 	 * Create the frame.
@@ -71,7 +76,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
 		JLabel toplabel = new JLabel();
 		toplabel.setFont(new Font("Arial", Font.BOLD, 15));
-		toplabel.setBounds(12, 13, 621, 49);
+		toplabel.setBounds(10, 11, 621, 53);
 		toplabel.setHorizontalAlignment(SwingConstants.CENTER);
 		toplabel.setText("Welkom " + this.employee.getName());
 		topPanel.add(toplabel);
@@ -116,7 +121,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		navPanel.add(buttonSetDash);
 
 		centerPanel = new JPanel();
-		centerPanel.setBounds(124, 75, 644, 532);
+		centerPanel.setBounds(125, 75, 644, 532);
 		centerPanel.setBackground(Color.white);
 		centerPanel.setBorder(new LineBorder(Color.black, 2));
 		contentPanel.add(centerPanel);
@@ -162,9 +167,34 @@ public class Dashboard extends JFrame implements ActionListener {
 		personalMessagesTop.setBounds(12, 13, 248, 90);
 		centerPanel.add(personalMessagesTop);
 		personalMessagesTop.setBackground(new Color(255, 153, 0));
-		personalMessagesTop.setBorder(new LineBorder(Color.DARK_GRAY, 3));
+		personalMessagesTop.setBorder(new LineBorder(Color.BLACK, 3));
 		personalMessagesTop.setLayout(null);
 
+		if (this.employee.toString().equalsIgnoreCase("Systeembeheerder")) {
+			JPanel panel_1 = new JPanel();
+			panel_1.setBackground(Color.WHITE);
+			panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+			panel_1.setBounds(284, 62, 155, 174);
+			centerPanel.add(panel_1);
+
+			buttonAddRoute = new JButton("Route toevoegen");
+			buttonAddRoute.addActionListener(this);
+			panel_1.add(buttonAddRoute);
+
+			methodsTop = new JPanel();
+			methodsTop.setLayout(null);
+			methodsTop.setBorder(new LineBorder(Color.BLACK, 3));
+			methodsTop.setBackground(new Color(255, 153, 0));
+			methodsTop.setBounds(284, 13, 155, 50);
+			centerPanel.add(methodsTop);
+
+			JLabel methods = new JLabel("Functies");
+			methods.setFont(new Font("Arial", Font.PLAIN, 14));
+			methods.setHorizontalAlignment(SwingConstants.CENTER);
+			methods.setBounds(12, 13, 133, 26);
+			methodsTop.add(methods);
+		}
+		
 		if (this.employee.toString().equalsIgnoreCase("Treinkoerier")) {
 			JLabel lblBerichten = new JLabel("Mijn leveringen");
 			lblBerichten.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -193,7 +223,9 @@ public class Dashboard extends JFrame implements ActionListener {
 			TZTcourierNotifications notification = new TZTcourierNotifications();
 			contentPanel.add(notification.centerPanel);
 			sidePanel.add(notification.navPanel);
-
+		} else if (e.getSource().equals(buttonAddRoute)) {
+			centerPanel.setVisible(false);
+			contentPanel.add(new RouteAdd());
 		} else {
 			System.out.print("false");
 		}

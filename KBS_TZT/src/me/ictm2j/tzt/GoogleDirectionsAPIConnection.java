@@ -1,12 +1,9 @@
-package les12;
-
+package me.ictm2j.tzt;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
 
 import org.json.*;
-
-
 
 
 public class GoogleDirectionsAPIConnection extends RouteAdd {

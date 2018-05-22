@@ -23,7 +23,6 @@ public class DbHelper {
 			array.add(rs.getString("name"));
 			array.add(rs.getString("roleName"));
 		}
-		
 		return array;
 	}
 	

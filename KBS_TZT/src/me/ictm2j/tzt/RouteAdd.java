@@ -5,19 +5,24 @@ import java.awt.Rectangle;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.SpringLayout;
+import java.awt.BorderLayout;
 
 public class RouteAdd extends JPanel implements ActionListener{
 	private JTextField textFieldBeginadres;
 	private JTextField textFieldEindadres;
 	private JTextField textFieldBeginStation;
 	private JTextField textFieldEindStation;
-	private JPanel AdminAddRoute;
-	private JPanel AdminAddDelivery;
+	public JLabel lblNewLabel;
 	public static String steers;
 	public static String sters;
 	public static String steis;
@@ -28,96 +33,85 @@ public class RouteAdd extends JPanel implements ActionListener{
 	 * Create the panel.
 	 */
 	public RouteAdd() {
-		setBounds(new Rectangle(10, 11, 452, 291));
+		setBackground(Color.WHITE);
+		setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		setBounds(new Rectangle(125, 75, 644, 532));
 		setLayout(null);
-		
+
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 523, 402);
+		panel.setBackground(Color.WHITE);
+		add(panel);
+		panel.setLayout(null);
+
 		JLabel lblLeveringRoute = new JLabel("Levering route");
+		lblLeveringRoute.setBounds(10, 11, 82, 14);
+		panel.add(lblLeveringRoute);
 		lblLeveringRoute.setFont(new Font("Arial", Font.BOLD, 11));
-		lblLeveringRoute.setBounds(10, 11, 123, 25);
-		add(lblLeveringRoute);
-		
+
 		JLabel lblBeginpunt = new JLabel("Begin adres");
-		lblBeginpunt.setBounds(10, 59, 123, 25);
-		add(lblBeginpunt);
-		
+		lblBeginpunt.setBounds(10, 39, 56, 14);
+		panel.add(lblBeginpunt);
+
 		JLabel lblBeginStation = new JLabel("Begin station");
-		lblBeginStation.setBounds(10, 95, 123, 25);
-		add(lblBeginStation);
-		
+		lblBeginStation.setBounds(10, 73, 62, 14);
+		panel.add(lblBeginStation);
+
 		JLabel lblEindStation = new JLabel("Eind station");
-		lblEindStation.setBounds(10, 131, 123, 25);
-		add(lblEindStation);
-		
+		lblEindStation.setBounds(10, 101, 56, 14);
+		panel.add(lblEindStation);
+
 		JLabel lblAfleverAdres = new JLabel("Aflever adres");
-		lblAfleverAdres.setBounds(10, 167, 123, 25);
-		add(lblAfleverAdres);
-		
+		lblAfleverAdres.setBounds(10, 126, 65, 14);
+		panel.add(lblAfleverAdres);
+
 		textFieldBeginadres = new JTextField();
+		textFieldBeginadres.setBounds(150, 36, 86, 20);
+		panel.add(textFieldBeginadres);
 		textFieldBeginadres.setColumns(10);
-		textFieldBeginadres.setBounds(187, 59, 205, 25);
-		add(textFieldBeginadres);
-		
+
 		textFieldBeginStation = new JTextField();
+		textFieldBeginStation.setBounds(150, 67, 86, 20);
+		panel.add(textFieldBeginStation);
 		textFieldBeginStation.setColumns(10);
-		textFieldBeginStation.setBounds(187, 97, 205, 25);
-		add(textFieldBeginStation);
-		
+
 		textFieldEindStation = new JTextField();
+		textFieldEindStation.setBounds(150, 98, 86, 20);
+		panel.add(textFieldEindStation);
 		textFieldEindStation.setColumns(10);
-		textFieldEindStation.setBounds(187, 133, 205, 25);
-		add(textFieldEindStation);
 
 		textFieldEindadres = new JTextField();
+		textFieldEindadres.setBounds(150, 123, 86, 20);
+		panel.add(textFieldEindadres);
 		textFieldEindadres.setColumns(10);
-		textFieldEindadres.setBounds(187, 167, 205, 25);
-		add(textFieldEindadres);
-		
+
 		JButton btnNewButtonRouteToevoegen = new JButton("Toevoegen");
+		btnNewButtonRouteToevoegen.setBounds(149, 154, 87, 23);
+		panel.add(btnNewButtonRouteToevoegen);
 		btnNewButtonRouteToevoegen.addActionListener(this);
-		btnNewButtonRouteToevoegen.setBounds(187, 203, 205, 31);
-		add(btnNewButtonRouteToevoegen);
-		
-		
-		
-	    }
+	}
+
 	public  void actionPerformed(ActionEvent e) {
 		try {
-			
-			String strba = textFieldBeginadres.getText();
-			String strbs=textFieldBeginStation.getText();
-			String stres=textFieldEindStation.getText();
-			String strea=textFieldEindadres.getText();
-			this.steers = strba;
-			this.sters = strbs;
-			this.steis = stres;
-			this.sties = strea;
-			
-			
-								
-			Statement s=Connection.connection.createStatement();
-			
-				
-				s.execute("INSERT INTO Route (startAdress,startStation,endStation,endAdress)VALUES('"+ strba + "' , '"+ strbs + "', '" + stres + "','" + strea +"')");
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}	
-		
-		
-		AdminAddRoute.setVisible(false);
-		AdminAddDelivery.setVisible(true);
+
+			steers = textFieldBeginadres.getText();
+			sters = textFieldBeginStation.getText();
+			steis = textFieldEindStation.getText();
+			sties = textFieldEindadres.getText();
+
+			PreparedStatement query = Connection.connection.prepareStatement("INSERT INTO Route (startAdress,startStation,endStation,endAdress)VALUES('"+ steers + "' , '"+ sters + "', '" + sters + "','" + sties +"')");
+			query.execute();
+			query.close();
+
+
+			System.out.println("Route succesvol toegevoegd");
+			this.setVisible(false);
+			Dashboard.centerPanel.setVisible(true);
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}	
+
 	}
-	protected static String getBeginAdres() {
-		return steers;
-			}
-	protected static String getBeginStation() {
-		return sters;
-			}
-	protected static String getEindStation() {
-		return steis;
-			}
-	protected static String getEindAdres() {
-		return sties;
-			}
-	
+
 }

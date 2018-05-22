@@ -96,7 +96,6 @@ public class Login extends JFrame implements ActionListener {
 						} else if (role.equalsIgnoreCase("Systeembeheerder")) {
 							dashboard = new Dashboard (new Systemmanager(username, DbHelper.getUserdataByUserID(username).get(0)));
 						}
-
 						dashboard.setVisible(true);
 
 					} else {

@@ -2,19 +2,16 @@ package me.ictm2j.tzt;
 
 import javax.swing.JPanel;
 import java.awt.Rectangle;
-import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class DeliveryAdd extends JPanel   implements ActionListener{
 	private JTextField textFieldDeliveryID;
@@ -22,8 +19,6 @@ public class DeliveryAdd extends JPanel   implements ActionListener{
 	private JTextField textFieldLockerID;
 	private JTextField textFieldRouteID;
 	private JTextField textFieldDatum;
-	private JTextField textFieldpackage;
-	private JPanel	   AdminAddDeliver;
 	public static String RBG = GoogleDirectionsAPIConnection.getRBG();
 	public static String RBGL = GoogleDirectionsAPIConnection.getRBGL();
 	public static String STS = GoogleDirectionsAPIConnection.getSTS();
@@ -34,7 +29,9 @@ public class DeliveryAdd extends JPanel   implements ActionListener{
 	 * Create the panel.
 	 */
 	public DeliveryAdd() {
-		setBounds(new Rectangle(10, 1, 452, 291));
+		setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		setBackground(Color.WHITE);
+		setBounds(new Rectangle(125, 75, 644, 532));
 		setLayout(null);
 		
 		JLabel jlabel = new JLabel(RBG + "\n" +  RBGL +"\n " + STS +"\n " + STER +"\n " + STERL);

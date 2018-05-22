@@ -9,9 +9,6 @@ public class Package {
 	private int weight;
 	private int pakketnummer;
 	
-	
-
-
 	public Package(int height, int width, int length, int weight, int pakketnummer ) {
 		
 		this.height = height;
